@@ -1,0 +1,3 @@
+gmpy2==2.2.1
+mpyc @ git+https://github.com/lschoe/mpyc@25ce2228356c805efcfaadfe81915bb6b5c8701d
+numpy==2.2.4
