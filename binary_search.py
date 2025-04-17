@@ -1,9 +1,9 @@
 from mpyc.runtime import mpc
-from mpyc.sectypes import SecureInteger
+from mpyc.sectypes import SecureInteger, SecureArray
 from mpyc.seclists import seclist
 
 
-def binary_search(arr: seclist, num: SecureInteger):
+def binary_search(arr: SecureArray, num: SecureInteger):
     n = len(arr)
     secnum = mpc.SecInt()
     i: SecureInteger = secnum(0)
