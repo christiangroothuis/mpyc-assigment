@@ -1,11 +1,11 @@
 from mpyc.runtime import mpc
 from mpyc.sectypes import SecureInteger, SecureArray
-from mpyc.seclists import seclist
+
+secnum = mpc.SecInt()
 
 
 def binary_search(arr: SecureArray, num: SecureInteger):
     n = len(arr)
-    secnum = mpc.SecInt()
     i: SecureInteger = secnum(0)
     j: SecureInteger = secnum(n - 1)
 
@@ -21,15 +21,10 @@ def binary_search(arr: SecureArray, num: SecureInteger):
 
 async def main():
     s = [19, 23, 29, 31, 37, 41, 43, 47, 53, 59]
-
-    secnum = mpc.SecInt()
-    x = list(map(secnum, s))
-    x = mpc.seclist(x)
+    x = mpc.seclist(s, secnum)
 
     async with mpc:
-        i = binary_search(x, secnum(23))
-
-        print(await mpc.output(i))
+        print(await mpc.output(binary_search(x, secnum(23))))
 
 
 if __name__ == "__main__":
