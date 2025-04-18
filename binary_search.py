@@ -15,8 +15,9 @@ def binary_search(arr: SecureArray, num: SecureInteger):
 
         j = mpc.if_else(c, k - 1, j)
         i = mpc.if_else(c, i, k + 1)
+        # TODO print values to see if we can derive the branching if values stay the same
 
-    return k
+    return (i + j) // 2
 
 
 async def main():
@@ -24,7 +25,7 @@ async def main():
     x = mpc.seclist(s, secnum)
 
     async with mpc:
-        print(await mpc.output(binary_search(x, secnum(23))))
+        print(await mpc.output(binary_search(x, secnum(53))))
 
 
 if __name__ == "__main__":
